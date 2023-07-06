@@ -235,11 +235,21 @@ void loop() {
     }
   }
 
-  /// *** CHECK ALARMS AND TURN ON LIGHT VARIABLE *** ///
-  
+  /// *** CHECK BOTH ALARMS AND TURN ON LIGHT VARIABLE *** ///
+
+  /*
   if ((myRTC.checkIfAlarm(1)) || (myRTC.checkIfAlarm(2))) {
     light = true;
   }
+  //*/
+
+  /// *** CHECK ONLY ALARM 1 AND TURN ON LIGHT VARIABLE *** ///
+  
+  ///*
+  if (myRTC.checkIfAlarm(1)) {
+    light = true;
+  }
+  //*/
 
   /// *** TURN OFF LIGHT AFTER 30 MINUTES *** ///
   
