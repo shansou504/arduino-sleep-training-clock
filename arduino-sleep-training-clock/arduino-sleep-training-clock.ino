@@ -33,15 +33,15 @@ LiquidCrystal_I2C lcd(0x27,20,4);
 // true = 12-hour mode
 bool mode12 = true;
 byte theSecond = 0;
-byte theMinute = 41;
+byte theMinute = 49;
 // theHour (byte) (use 24 hour clock)
-byte theHour = 14;
+byte theHour = 11;
 // theDoW (byte) Day of Week (1 = Sunday)
 byte theDoW = 4;
 byte theDate = 21; 
 byte theMonth = 12;
 // theYear (byte) (use 2 digits)
-byte theYear = 22;
+byte theYear = 23;
 // hPM (bool) Used for DS3231::getHour() function
 bool hPM;
 // CenturyBit (bool) Used to roll over 99 to 00
@@ -53,7 +53,7 @@ byte A1Day = 1;
 // 0-23 for 24-hour mode)
 byte A1Hour = 7;
 // A1Minute (byte) Sets the minute for alarm 1
-byte A1Minute = 30;
+byte A1Minute = 15;
 // A1Second (byte) Sets the second for alarm 1
 byte A1Second = 0;
 // Alarm1Bits (byte) reference the DS3231 documentation
@@ -123,7 +123,7 @@ void setup() {
   myRTC.setDate(theDate);
   myRTC.setMonth(theMonth);
   myRTC.setYear(theYear);
-  */
+  //*/
 
   /// *** SET ALARMS *** ///
   
@@ -133,12 +133,12 @@ void setup() {
 
   myRTC.setA2Time(A2Day, A2Hour, A2Minute, Alarm2Bits, A2Dy, A2h12,
                   A2PM);
-  */
+  //*/
 
-  /// *** TURN ON ALARMS *** ///
+  /// *** TURN ON/OFF ALARMS *** ///
   
   myRTC.turnOnAlarm(1);
-  myRTC.turnOnAlarm(2);
+  myRTC.turnOffAlarm(2);
 
   /// *** INITIALIZE BUTTON *** ///
   
@@ -251,11 +251,11 @@ void loop() {
   }
   //*/
 
-  /// *** TURN OFF LIGHT AFTER 30 MINUTES *** ///
+  /// *** TURN OFF LIGHT AFTER 15 MINUTES *** ///
   
   if (light) {
     count = count + 1;
-    if (count > 1799) {
+    if (count > 899) {
       count = 0;
       light = false;
     }
