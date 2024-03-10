@@ -33,15 +33,15 @@ LiquidCrystal_I2C lcd(0x27,20,4);
 // true = 12-hour mode
 bool mode12 = true;
 byte theSecond = 0;
-byte theMinute = 49;
+byte theMinute = 34;
 // theHour (byte) (use 24 hour clock)
-byte theHour = 11;
+byte theHour = 15;
 // theDoW (byte) Day of Week (1 = Sunday)
-byte theDoW = 4;
-byte theDate = 21; 
-byte theMonth = 12;
+byte theDoW = 1;
+byte theDate = 10; 
+byte theMonth = 3;
 // theYear (byte) (use 2 digits)
-byte theYear = 23;
+byte theYear = 24;
 // hPM (bool) Used for DS3231::getHour() function
 bool hPM;
 // CenturyBit (bool) Used to roll over 99 to 00
@@ -245,8 +245,16 @@ void loop() {
 
   /// *** CHECK ONLY ALARM 1 AND TURN ON LIGHT VARIABLE *** ///
   
-  ///*
+  /*
   if (myRTC.checkIfAlarm(1)) {
+    light = true;
+  }
+  //*/
+
+  /// *** CHECK ONLY ALARM 1 AND TURN ON LIGHT VARIABLE - DISABLE ON WEEKENDS *** ///
+  
+  ///*
+  if (myRTC.checkIfAlarm(1) && myRTC.getDoW() > 1 && myRTC.getDoW() < 6) {
     light = true;
   }
   //*/
