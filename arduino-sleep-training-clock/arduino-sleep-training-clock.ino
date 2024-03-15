@@ -33,12 +33,12 @@ LiquidCrystal_I2C lcd(0x27,20,4);
 // true = 12-hour mode
 bool mode12 = true;
 byte theSecond = 0;
-byte theMinute = 34;
+byte theMinute = 30;
 // theHour (byte) (use 24 hour clock)
-byte theHour = 15;
+byte theHour = 9;
 // theDoW (byte) Day of Week (1 = Sunday)
-byte theDoW = 1;
-byte theDate = 10; 
+byte theDoW = 6;
+byte theDate = 15; 
 byte theMonth = 3;
 // theYear (byte) (use 2 digits)
 byte theYear = 24;
@@ -127,7 +127,7 @@ void setup() {
 
   /// *** SET ALARMS *** ///
   
-  /* 
+  ///* 
   myRTC.setA1Time(A1Day, A1Hour, A1Minute, A1Second, Alarm1Bits, A1Dy,
                   A1h12, A1PM);
 
@@ -254,7 +254,7 @@ void loop() {
   /// *** CHECK ONLY ALARM 1 AND TURN ON LIGHT VARIABLE - DISABLE ON WEEKENDS *** ///
   
   ///*
-  if (myRTC.checkIfAlarm(1) && myRTC.getDoW() > 1 && myRTC.getDoW() < 6) {
+  if (myRTC.checkIfAlarm(1) && myRTC.getDoW() > 1 && myRTC.getDoW() < 7) {
     light = true;
   }
   //*/
